@@ -40,8 +40,8 @@ int main() {
 
 	cout << "\nValeur Minimum : ";
 	
-	Fraction tmp = *s.begin();			// obligé de faire ça(je sais pas pourquoi
-	tmp.simplify(100).print();			//ça ne marchait pas de déréférencer s.begin() directement
+	Fraction tmp = *s.begin();			// obligé de faire ça (question de const) : *S.begin() renvoie une constante alors que simplify  
+	tmp.simplify(100).print();			// n'est pas une fonction const ie on est obligé par une fraction temporaire non constante
 	//*s.begin().simplify(100).print();
 
 	cout << "\nValeur Maximum : ";
