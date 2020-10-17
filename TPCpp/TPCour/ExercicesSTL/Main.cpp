@@ -16,7 +16,7 @@ int main() {
 	int den = 0;
 	char slash;
 
-	// Récupération des infos du fichier
+	// Récupération des infos du fichier (donc faut pas oublier de le créer avant)
 
 	ifstream fichier("exo.txt", ios::beg);					
 	if (fichier) {
