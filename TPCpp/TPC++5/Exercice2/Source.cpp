@@ -9,5 +9,4 @@ int main() {
 	rectangle rg(3, 6);
 	Shape s;
 
-
 }

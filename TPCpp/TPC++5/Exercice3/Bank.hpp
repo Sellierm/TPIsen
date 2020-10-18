@@ -19,6 +19,7 @@ class CheckingAccount : protected BankAccount
 private:
 	float overdraftLimit;
 public:
+	CheckingAccount(int nb, string name, float bl, float overDraft);
 	bool withdrawal(float);
 	bool transfer(float, BankAccount&);
 };

@@ -42,3 +42,23 @@ SavingAccount::SavingAccount(int nb, string name, float bl, float rate) : BankAc
 void SavingAccount::depositeAnnualInterest(){
 	balance += balance * annualInterestRate;
 }
+
+
+CheckingAccount::CheckingAccount(int nb, string name, float bl, float overDraft) : BankAccount(nb, name, bl) {overdraftLimit = overDraft;}
+
+bool CheckingAccount::transfer(float ammount, BankAccount& otherBankAccount) {
+	if (balance + overdraftLimit >= ammount) {
+		balance -= ammount;
+		otherBankAccount.balance += ammount;
+		return true;
+	}
+	else return false;
+}
+
+bool CheckingAccount::withdrawal(float ammount) {
+	if (balance + overdraftLimit >= ammount) {
+		balance -= ammount;
+		return true;
+	}
+	else return false;
+}
