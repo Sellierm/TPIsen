@@ -1,0 +1,4 @@
+ISEN = Institut superieur de l'electronique et du numerique
+FIFA = Federation Internationale de Football Association
+SFR = Societe francaise du radiotelephone
+CEDEX = courrier d'entreprise a distribution exceptionnelle
