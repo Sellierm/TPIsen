@@ -1,5 +1,5 @@
 #include "Bank.hpp"
-
+//jcrois il manque des trucs j'avais la flemme deso
 BankAccount::BankAccount(int nb, string name, float bl) {
 	balance = bl;
 	owner = name;
