@@ -25,3 +25,14 @@ let components_data = [
     {idComp:'23', name:'Vanille', needRecipe:'1', price:'4', type:'food', buyInBulk:'1', percentUsed:'0.5'},
     {idComp:'24', name:'Canelle', needRecipe:'1', price:'3', type:'food', buyInBulk:'1', percentUsed:'0.5'},
 ];
+
+let getComponent=(function(){
+    return{
+        getName : function (id){ return components_data[id].name},
+        getNeedRecipe : function(id){ return components_data[id].needRecipe},
+        getPrice : function(id){return components_data[id].price},
+        getType : function(id){return components_data[id].type},
+        getBuyInBulk : function(id){return components_data[id].buyInBulk},
+        getPercentUsed : function(id){return components_data[id].percentUsed}
+    }
+})();

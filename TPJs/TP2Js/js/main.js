@@ -1,1 +1,3 @@
-getTable.create();
+getTableProducts.create();
+
+getTableComponents.create();

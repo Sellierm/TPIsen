@@ -6,11 +6,11 @@
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
         <link rel="stylesheet" type="text/css" href="./css/list.css" />
         <script src="js/components-data.js"></script>
-        <script src="js/components-module.js"></script>
+        <script src="js/components-table-module.js"></script>
         <script src="js/products-data.js"></script>
-        <script src="js/products-module.js"></script>
-        <script src="js/row-module.js"></script>
-        <script src="js/table-module.js"></script>
+        <script src="js/products-table-module.js"></script>
+        <script src="js/products-row-module.js"></script>
+        <script src="js/components-row-module.js"></script>
         <script src="js/main.js" defer></script>
 
     </head>
@@ -21,19 +21,24 @@
         <div id="content">
             <div id="list">
                 <table id="tableProducts">
-                    <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Temps de préaration</th>
+                        <th>Temps de préparation</th>
                         <th>Composants</th>
                         <th>Prix total</th>
                         <th>Nombre de récipients pour les ingrédients</th>
                         <th>Uniquement avec du vrac</th>
                     </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
+                </table>
+                <table id="tableComponents">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Besoin de récipient</th>
+                        <th>Prix</th>
+                        <th>Type</th>
+                        <th>En vrac?</th>
+                        <th>Pourcentage utilisé</th>
+                  </tr>
                 </table>
             </div>
         </div>
