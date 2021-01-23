@@ -42,7 +42,6 @@ QUnit.test('TicTacToe play - player id', function(assert) {
 
 QUnit.test('TicTacToe play - grid state', function(assert) {
 	let game = new TicTacToe();
-
 	game.play(0,0);
 	assert.equal(0, game.grid[0][0]);
 	game.play(0,1);
@@ -114,6 +113,7 @@ QUnit.test('TicTacToe win column', function(assert) {
 	game.play(2,0);
 	assert.ok(!game.isFinished());
 	game.play(1,0);
+	console.log(game.grid)
 	assert.ok(game.isFinished());
 	assert.ok(game.hasWinner());
 	assert.equal(game.getWinner(), 0);
