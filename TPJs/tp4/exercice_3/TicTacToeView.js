@@ -27,7 +27,7 @@ class TicTacToeView extends Observable{
                         let title = document.getElementById("resultat");
                         if (this.game.hasWinner()) {
                             let title = document.getElementById("resultat");
-                            title.textContent = "Le joueur " + this.game.getWinner() + " gagne la partie!";
+                            title.textContent = "Le joueur " + (this.game.getWinner() + 1)  + " gagne la partie!";
                         }
                         else {
                             title.textContent = "Pas de gagnant pour cette fois!";
@@ -46,6 +46,8 @@ class TicTacToeView extends Observable{
                         td[i].removeChild(td[i].firstElementChild)
                     }
                 }
+                document.getElementById("resultat").textContent = "";
+                document.getElementById("player_number").textContent = 1;
                 }
             )
         }

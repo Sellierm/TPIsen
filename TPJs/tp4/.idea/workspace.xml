@@ -51,6 +51,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -66,7 +67,7 @@
       <workItem from="1611438639796" duration="2830000" />
       <workItem from="1611514058595" duration="1734000" />
       <workItem from="1611772762217" duration="6279000" />
-      <workItem from="1611818496309" duration="16516000" />
+      <workItem from="1611818496309" duration="17336000" />
     </task>
     <servers />
   </component>
@@ -94,6 +95,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="707" y="288" width="1696" height="1097" key="dock-window-1/0.0.2560.1400/2560.0.1680.1010@0.0.2560.1400" timestamp="1611431263412" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1611866667376">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400/2560.0.1680.1010@0.0.2560.1400" timestamp="1611866667376" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1611860725853">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
