@@ -62,7 +62,11 @@
       <option name="presentableId" value="Default" />
       <updated>1611333832963</updated>
       <workItem from="1611333834020" duration="1350000" />
-      <workItem from="1611408970150" duration="9642000" />
+      <workItem from="1611408970150" duration="10072000" />
+      <workItem from="1611438639796" duration="2830000" />
+      <workItem from="1611514058595" duration="1734000" />
+      <workItem from="1611772762217" duration="6279000" />
+      <workItem from="1611818496309" duration="16516000" />
     </task>
     <servers />
   </component>
@@ -82,9 +86,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1611777286374">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.2560.1400/2560.0.1680.1010@0.0.2560.1400" timestamp="1611777286374" />
     <state x="707" y="288" width="1696" height="1097" key="dock-window-1" timestamp="1611431263412">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="707" y="288" width="1696" height="1097" key="dock-window-1/0.0.2560.1400/2560.0.1680.1010@0.0.2560.1400" timestamp="1611431263412" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1611860725853">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.0.1680.1010@0.0.2560.1400" timestamp="1611860725853" />
   </component>
 </project>
