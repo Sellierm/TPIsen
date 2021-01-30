@@ -26,36 +26,45 @@ class TicTacToeView extends Observable{
             td[i].addEventListener("click",event => {
                this.trigger(i.toString())
             });
-            document.getElementById("reset").addEventListener("click",event =>{
-                this.game.reset();
 
-                if (Math.random() < 0.5) {
-                    this.game.currentPlayer = 0
-                } else {
-                    this.game.currentPlayer = 1;
-                }
-                let td= document.getElementsByTagName("td");
-                for(let i=0;i<9; i++){
-                    if(td[i].firstElementChild){
-                        td[i].removeChild(td[i].firstElementChild)
-                    }
-                }
-                document.getElementById("resultat").textContent = "";
-                document.getElementById("player_number").textContent = (this.game.getCurrentPlayer() + 1);
-                }
-            )
         }
+        document.getElementById("reset").addEventListener("click",event => {
+            this.resetGame();
+        });
 
 
     }
 
+
+    resetGame(){
+        this.game.reset();
+        if (Math.random() < 0.5) {
+            this.game.currentPlayer = 0
+        } else {
+            this.game.currentPlayer = 1;
+            this.IAMove();
+        }
+        let td= document.getElementsByTagName("td");
+        for(let i=0;i<9; i++){
+            if(td[i].firstElementChild){
+                td[i].removeChild(td[i].firstElementChild)
+            }
+        }
+        document.getElementById("resultat").textContent = "";
+        document.getElementById("player_number").textContent = (this.game.getCurrentPlayer() + 1);
+    }
 
     MakeMove(i){
         if(this.game.getCaseState(Math.trunc((i)/3),(i)%3) === undefined && !this.game.isFinished()) {
             this.game.play(Math.trunc((i) / 3), (i) % 3);
             let playerTurn = document.getElementById("player_number");
 
-            playerTurn.textContent = 1 + this.game.getCurrentPlayer()
+            if(this.game.getWinner() === 1 && this.playAgainstIA){
+                playerTurn.textContent = "Computer's";
+            }
+            else{
+                playerTurn.textContent = 1 + this.game.getCurrentPlayer()
+            }
 
             let div = document.getElementsByTagName("td");
             console.log(div)
@@ -81,10 +90,16 @@ class TicTacToeView extends Observable{
                 let title = document.getElementById("resultat");
                 if (this.game.hasWinner()) {
                     let title = document.getElementById("resultat");
-                    title.textContent = "Le joueur " + (this.game.getWinner() + 1)  + " gagne la partie!";
+
+                    if(this.game.getWinner() === 1 && this.playAgainstIA){
+                        title.textContent = "Computer won !";
+                    }
+                    else{
+                        title.textContent = "Player " + (this.game.getWinner() + 1)  + " won the game!";
+                    }
                 }
                 else {
-                    title.textContent = "Pas de gagnant pour cette fois!";
+                    title.textContent = "No winner this game!";
                 }
             }
         }

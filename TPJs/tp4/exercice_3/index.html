@@ -13,16 +13,25 @@
 	<script type="text/javascript" src="functions.js"></script>
 	<script type="text/javascript" src="TicTacToeView.js"></script>
 </head>
-<div>
+<body>
 	<div class="jumbotron text-center" >
 		<h1>Tic Tac Toe</h1>
 		<p>By Judith Lecoq and Vanwormhoudt Elliott</p>
 	</div>
 	<div class="row game ">
 
-		<div class="col-2"></div>
-		<div class="col-8">
-		<h3>C'est au joueur <span id="player_number">?</span> de jouer:</h3>
+		<div class="col-3 d-block">
+			<h3>If you want to play with a friend, or yourself:</h3>
+			<button type="button" id="2player" class="btn btn-outline-dark">2 player mode</button>
+			<h3>Or you can try to beat the computer(spoiler: you can't)</h3>
+			<button type="button" id="ia" class="btn btn-outline-dark">player vs IA</button>
+			<h3>And if you want to play again, here is a button for that</h3>
+			<button type="button" id="reset" class="btn btn-outline-dark">Recommencer</button>
+			<h3>Just Ignore this button</h3>
+			<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-dark" role="button">don't click</a>
+		</div>
+		<div class="col-6">
+		<h3 >It's <span id="player_number">player ?</span>'s turn:</h3>
 		<table id="morpion">
 			<tr>
 				<td></td>
@@ -41,9 +50,8 @@
 		</tr>
 	</table>
 	<h3 id="resultat"></h3>
-			<button type="button" id="reset" class="btn btn-outline-dark">Recommencer</button>
 		</div>
-		<div class="col-2"></div>
+		<div class="col-3"></div>
 	</div>
 	<script type="text/javascript" src="main.js"></script>
 
