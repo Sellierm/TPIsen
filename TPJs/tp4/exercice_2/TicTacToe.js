@@ -49,7 +49,6 @@ class TicTacToe extends Observable{
     hasWinner(){
         for(let i = 0; i < 3; i++) {
             if(this.grid[i][0] === this.grid[i][1] && this.grid[i][1] === this.grid[i][2] && this.grid[i][0] !== undefined){
-                console.log("ça marche 1")
                 if(this.grid[i][0] === 1){
                     this.winner = 1;
                 }
@@ -61,7 +60,6 @@ class TicTacToe extends Observable{
 
             }
             if(this.grid[0][i] === this.grid[1][i] && this.grid[1][i] === this.grid[2][i] && this.grid[0][i] !== undefined){
-                console.log("ça marche 2")
                 if(this.grid[0][i] === 1){
                     this.winner = 1;
                 }
@@ -72,7 +70,6 @@ class TicTacToe extends Observable{
             }
         }
         if(this.grid[0][0] === this.grid[1][1] && this.grid[1][1] === this.grid[2][2] && this.grid[2][2] !== undefined){
-            console.log("ça marche 3")
             if(this.grid[1][1] === 1){
                 this.winner = 1;
             }

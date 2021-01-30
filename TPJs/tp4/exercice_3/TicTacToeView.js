@@ -3,43 +3,37 @@ class TicTacToeView extends Observable{
         super();
         this.game = game;
         this.name = name;
+        this.turn = 0;
+        this.playAgainstIA = true;
+
+        if (Math.random() < 0.5) {
+            this.game.currentPlayer = 0
+        } else {
+            this.game.currentPlayer = 1;
+            this.IAMove();
+
+        }
+
+
         let playerTurn = document.getElementById("player_number");
-        playerTurn.textContent = "1";
+        playerTurn.textContent = (this.game.getCurrentPlayer() + 1);
 
         let td = document.getElementsByTagName("td");
-        for(let i = 1;i< 10;i++){
+        for(let i = 0;i< 9;i++){
             this.on(i.toString(), x => {
-                if(this.game.getCaseState(Math.trunc((i-1)/3),(i-1)%3) === undefined && !this.game.isFinished()) {
-                    this.game.play(Math.trunc((i - 1) / 3), (i - 1) % 3);
-                    let playerTurn = document.getElementById("player_number");
-                    playerTurn.textContent = 1 + this.game.getCurrentPlayer()
-                    let div = document.getElementsByTagName("td");
-                    if (this.game.getCurrentPlayer() == 0) {
-                        let img = document.createElement("img")
-                        img.src ="images/circle.png";
-                        div[i - 1].appendChild(img);
-                    } else {
-                        let img = document.createElement("img")
-                        img.src ="images/cross.png";
-                        div[i - 1].appendChild(img);
-                    }
-                    if (this.game.isFinished()) {
-                        let title = document.getElementById("resultat");
-                        if (this.game.hasWinner()) {
-                            let title = document.getElementById("resultat");
-                            title.textContent = "Le joueur " + (this.game.getWinner() + 1)  + " gagne la partie!";
-                        }
-                        else {
-                            title.textContent = "Pas de gagnant pour cette fois!";
-                        }
-                    }
-                }
+                this.MakeMove(i)
             });
-            td[i-1].addEventListener("click",event => {
+            td[i].addEventListener("click",event => {
                this.trigger(i.toString())
             });
             document.getElementById("reset").addEventListener("click",event =>{
                 this.game.reset();
+
+                if (Math.random() < 0.5) {
+                    this.game.currentPlayer = 0
+                } else {
+                    this.game.currentPlayer = 1;
+                }
                 let td= document.getElementsByTagName("td");
                 for(let i=0;i<9; i++){
                     if(td[i].firstElementChild){
@@ -47,9 +41,69 @@ class TicTacToeView extends Observable{
                     }
                 }
                 document.getElementById("resultat").textContent = "";
-                document.getElementById("player_number").textContent = 1;
+                document.getElementById("player_number").textContent = (this.game.getCurrentPlayer() + 1);
                 }
             )
         }
+
+
     }
+
+
+    MakeMove(i){
+        if(this.game.getCaseState(Math.trunc((i)/3),(i)%3) === undefined && !this.game.isFinished()) {
+            this.game.play(Math.trunc((i) / 3), (i) % 3);
+            let playerTurn = document.getElementById("player_number");
+
+            playerTurn.textContent = 1 + this.game.getCurrentPlayer()
+
+            let div = document.getElementsByTagName("td");
+            console.log(div)
+
+            if (this.game.getCurrentPlayer() == 0) {
+                let img = document.createElement("img")
+                img.src ="images/circle.png";
+                div[i].appendChild(img);
+            } else {
+                let img = document.createElement("img")
+                img.src ="images/cross.png";
+                div[i].appendChild(img);
+            }
+
+            this.turn++;
+            console.log(this.game.getCurrentPlayer())
+            if(this.playAgainstIA && this.game.getCurrentPlayer() == 1){
+                this.IAMove();
+            }
+
+
+            if (this.game.isFinished()) {
+                let title = document.getElementById("resultat");
+                if (this.game.hasWinner()) {
+                    let title = document.getElementById("resultat");
+                    title.textContent = "Le joueur " + (this.game.getWinner() + 1)  + " gagne la partie!";
+                }
+                else {
+                    title.textContent = "Pas de gagnant pour cette fois!";
+                }
+            }
+        }
+    }
+
+    async IAMove(){
+        minimax(this.game.grid,this.game.getCurrentPlayer(),(9-this.turn));
+        await new Promise(r => setTimeout(r, 300));
+
+        for(let i = 0; i< 3;i++){
+            for(let j= 0; j< 3;j++){
+                if(finalMove[i][j] !== this.game.getCaseState(i,j)){
+                    this.MakeMove(i*3 + j );
+                    console.log('test')
+                }
+            }
+        }
+    }
+
+
+
 }
