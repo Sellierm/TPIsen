@@ -76,22 +76,20 @@ function createGrid(grid){
 }
 
 
-function minimax(grid,player,n,min,max) {
+function minimax(grid,player,n) {
+    //tiré du pseudo code https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
     if (n === 0 || points(grid) !== -2) {
         return points(grid);
     }
     let possibilities = getAllPossibilities(grid, player);
     let value = [];
 
-
-    for (let i in possibilities) {
-        value.push(minimax(possibilities[i], ((player +1)%2), n + 1));
-    }
-
-
     if (player === 0) {
+        for (let i in possibilities) {
+            value.push(minimax(possibilities[i], ((player +1)%2), n + 1));
+        }
         finalMove = possibilities[0];
-        max = value[0];
+        let max = -10;
         for (let i in value) {
             if (value[i] > max) {
                 max = value[i];
@@ -100,8 +98,11 @@ function minimax(grid,player,n,min,max) {
         }
         return max;
     } else {
+        for (let i in possibilities) {
+            value.push(minimax(possibilities[i], ((player +1)%2), n + 1));
+        }
         finalMove = possibilities[0];
-        min = value[0];
+        let min = 100;
         for (let i in value) {
             if (value[i] < min) {
                 min = value[i];

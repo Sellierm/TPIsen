@@ -10,13 +10,13 @@ class TicTacToeView extends Observable{
             this.game.currentPlayer = 0
         } else {
             this.game.currentPlayer = 1;
-            this.IAMove();
-
+            if(this.playAgainstIA === true)
+                this.IAMove();
         }
 
 
         let playerTurn = document.getElementById("player_number");
-        playerTurn.textContent = (this.game.getCurrentPlayer() + 1);
+        playerTurn.textContent = "player " +(1 + this.game.getCurrentPlayer());
 
         let td = document.getElementsByTagName("td");
         for(let i = 0;i< 9;i++){
@@ -32,6 +32,13 @@ class TicTacToeView extends Observable{
             this.resetGame();
         });
 
+        document.getElementById("2player").addEventListener("click",event => {
+            this.twoPlayer();
+        });
+
+        document.getElementById("reset").addEventListener("click",event => {
+            this.playerVsIa();
+        });
 
     }
 
@@ -42,7 +49,8 @@ class TicTacToeView extends Observable{
             this.game.currentPlayer = 0
         } else {
             this.game.currentPlayer = 1;
-            this.IAMove();
+            if(this.playAgainstIA === true)
+                this.IAMove();
         }
         let td= document.getElementsByTagName("td");
         for(let i=0;i<9; i++){
@@ -63,11 +71,10 @@ class TicTacToeView extends Observable{
                 playerTurn.textContent = "Computer's";
             }
             else{
-                playerTurn.textContent = 1 + this.game.getCurrentPlayer()
+                playerTurn.textContent = "player " +(1 + this.game.getCurrentPlayer());
             }
 
             let div = document.getElementsByTagName("td");
-            console.log(div)
 
             if (this.game.getCurrentPlayer() == 0) {
                 let img = document.createElement("img")
@@ -117,6 +124,15 @@ class TicTacToeView extends Observable{
                 }
             }
         }
+    }
+
+    twoPlayer(){
+        this.playAgainstIA = false;
+        this.resetGame();
+    }
+    playerVsIa(){
+        this.playAgainstIA = true;
+        this.resetGame();
     }
 
 
