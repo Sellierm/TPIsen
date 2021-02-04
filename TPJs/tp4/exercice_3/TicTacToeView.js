@@ -5,12 +5,11 @@ class TicTacToeView extends Observable{
         this.name = name;
         this.turn = 0;
         this.playAgainstIA = true;
-
         if (Math.random() < 0.5) {
             this.game.currentPlayer = 0
         } else {
             this.game.currentPlayer = 1;
-            if(this.playAgainstIA === true)
+            if(this.playAgainstIA)
                 this.IAMove();
         }
 
@@ -20,11 +19,11 @@ class TicTacToeView extends Observable{
 
         let td = document.getElementsByTagName("td");
         for(let i = 0;i< 9;i++){
-            this.on(i.toString(), x => {
+            super.on(i.toString(), x => {
                 this.MakeMove(i)
             });
             td[i].addEventListener("click",event => {
-               this.trigger(i.toString())
+                super.trigger(i.toString())
             });
 
         }
@@ -36,11 +35,12 @@ class TicTacToeView extends Observable{
             this.twoPlayer();
         });
 
-        document.getElementById("reset").addEventListener("click",event => {
+        document.getElementById("ia").addEventListener("click",event => {
             this.playerVsIa();
         });
 
     }
+
 
 
     resetGame(){
@@ -49,7 +49,7 @@ class TicTacToeView extends Observable{
             this.game.currentPlayer = 0
         } else {
             this.game.currentPlayer = 1;
-            if(this.playAgainstIA === true)
+            if(this.playAgainstIA)
                 this.IAMove();
         }
         let td= document.getElementsByTagName("td");
@@ -76,7 +76,7 @@ class TicTacToeView extends Observable{
 
             let div = document.getElementsByTagName("td");
 
-            if (this.game.getCurrentPlayer() == 0) {
+            if (this.game.getCurrentPlayer() === 0) {
                 let img = document.createElement("img")
                 img.src ="images/circle.png";
                 div[i].appendChild(img);
@@ -87,8 +87,7 @@ class TicTacToeView extends Observable{
             }
 
             this.turn++;
-            console.log(this.game.getCurrentPlayer())
-            if(this.playAgainstIA && this.game.getCurrentPlayer() == 1){
+            if(this.playAgainstIA && this.game.getCurrentPlayer() === 1){
                 this.IAMove();
             }
 
@@ -112,15 +111,12 @@ class TicTacToeView extends Observable{
         }
     }
 
-    async IAMove(){
+    IAMove(){
         minimax(this.game.grid,this.game.getCurrentPlayer(),(9-this.turn));
-        await new Promise(r => setTimeout(r, 300));
-
         for(let i = 0; i< 3;i++){
             for(let j= 0; j< 3;j++){
                 if(finalMove[i][j] !== this.game.getCaseState(i,j)){
                     this.MakeMove(i*3 + j );
-                    console.log('test')
                 }
             }
         }
